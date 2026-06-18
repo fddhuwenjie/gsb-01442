@@ -1,0 +1,91 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+*.local
+.output
+.vitepress/cache
+.vitepress/dist
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# Testing
+coverage
+.nyc_output
+
+# Cache
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+tmp
+temp
+*.tmp
+*.temp
+
+# Package manager
+.pnpm-debug.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite
+*.local
+
+# Frontend docs
+frontend-docs/.vitepress/cache
+frontend-docs/.vitepress/dist
+
+# Play
+play/dist
+
+# Lock files (keep pnpm-lock.yaml)
+package-lock.json
+yarn.lock
+
+# Build artifacts
+packages/*/dist
+packages/*/*.tgz
+
+# IDE
+.history
+
+# Husky
+.husky/_
+
+# Changesets
+.changeset/*.md
+!.changeset/README.md

@@ -1,0 +1,74 @@
+{
+  "name": "alkaid-plus-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Enterprise-grade Vue 3 component library based on Element Plus",
+  "keywords": [
+    "vue",
+    "vue3",
+    "element-plus",
+    "component-library",
+    "typescript"
+  ],
+  "homepage": "https://github.com/alkaid-plus/alkaid-plus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alkaid-plus/alkaid-plus.git"
+  },
+  "license": "MIT",
+  "author": "Alkaid Team",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -C play dev",
+    "dev:docs": "pnpm -C frontend-docs dev",
+    "build": "pnpm -C packages/alkaid-plus build",
+    "build:docs": "pnpm -C frontend-docs build",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "clean": "rimraf node_modules **/node_modules **/dist",
+    "prepare": "husky install",
+    "gen": "tsx scripts/gen-component.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.20.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.1",
+    "vue-tsc": "^1.8.27"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "search-insights"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss,less,md,json}": [
+      "prettier --write"
+    ]
+  }
+}

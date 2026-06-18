@@ -1,0 +1,27 @@
+{
+  "name": "@alkaid-plus/resolver",
+  "version": "1.0.0",
+  "description": "Resolver for unplugin-vue-components to auto-import Alkaid Plus components",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean"
+  },
+  "peerDependencies": {
+    "unplugin-vue-components": ">=0.22.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "unplugin-vue-components": "^0.26.0"
+  }
+}

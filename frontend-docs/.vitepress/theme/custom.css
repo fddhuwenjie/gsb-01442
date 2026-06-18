@@ -1,0 +1,96 @@
+/* Alkaid Plus 文档自定义样式 */
+
+:root {
+  --vp-c-brand-1: #409eff;
+  --vp-c-brand-2: #66b1ff;
+  --vp-c-brand-3: #409eff;
+  --vp-c-brand-soft: rgba(64, 158, 255, 0.14);
+}
+
+.dark {
+  --vp-c-brand-1: #409eff;
+  --vp-c-brand-2: #66b1ff;
+  --vp-c-brand-3: #409eff;
+  --vp-c-brand-soft: rgba(64, 158, 255, 0.16);
+}
+
+/* 首页样式 */
+.VPHero .name {
+  background: linear-gradient(120deg, #409eff 30%, #67c23a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 代码块样式 */
+.vp-doc div[class*='language-'] {
+  border-radius: 8px;
+}
+
+/* Demo 容器样式 */
+.demo-container {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.demo-container__preview {
+  padding: 24px;
+  background: var(--vp-c-bg);
+}
+
+.demo-container__code {
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.demo-container__actions {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  border-top: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+}
+
+.demo-container__actions button {
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.demo-container__actions button:hover {
+  color: var(--vp-c-brand-1);
+}
+
+/* 表格样式优化 */
+.vp-doc table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 12px 16px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+/* 组件示例间距 */
+.vp-doc .el-button + .el-button {
+  margin-left: 12px;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .demo-container__preview {
+    padding: 16px;
+  }
+}

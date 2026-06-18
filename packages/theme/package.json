@@ -1,0 +1,19 @@
+{
+  "name": "@alkaid-plus/theme",
+  "version": "1.0.0",
+  "description": "Theme styles for Alkaid Plus",
+  "license": "MIT",
+  "main": "dist/index.css",
+  "exports": {
+    ".": "./dist/index.css",
+    "./src/*": "./src/*",
+    "./*": "./dist/*"
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "sass src/index.scss dist/index.css --no-source-map && node scripts/copy-fonts.js"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
+  }
+}

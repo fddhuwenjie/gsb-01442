@@ -1,0 +1,25 @@
+services:
+  # 文档站点
+  frontend-docs:
+    build:
+      context: .
+      dockerfile: frontend-docs/Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
+    container_name: alkaid-plus-docs
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - alkaid-network
+
+networks:
+  alkaid-network:
+    driver: bridge

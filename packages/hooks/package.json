@@ -1,0 +1,31 @@
+{
+  "name": "@alkaid-plus/hooks",
+  "version": "1.0.0",
+  "description": "Vue composable hooks for Alkaid Plus",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean"
+  },
+  "dependencies": {
+    "@alkaid-plus/utils": "workspace:*",
+    "@vueuse/core": "^10.7.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "vue": "^3.4.15"
+  }
+}

@@ -1,0 +1,149 @@
+// Alkaid Plus 主题变量
+// 继承 Element Plus 变量，可覆盖自定义
+
+// 命名空间
+$namespace: 'ak' !default;
+$common-separator: '-' !default;
+$element-separator: '__' !default;
+$modifier-separator: '--' !default;
+$state-prefix: 'is-' !default;
+
+// 颜色系统
+$colors: (
+  'primary': (
+    'base': #409eff,
+  ),
+  'success': (
+    'base': #67c23a,
+  ),
+  'warning': (
+    'base': #e6a23c,
+  ),
+  'danger': (
+    'base': #f56c6c,
+  ),
+  'error': (
+    'base': #f56c6c,
+  ),
+  'info': (
+    'base': #909399,
+  ),
+) !default;
+
+// 文本颜色
+$text-color: (
+  'primary': #303133,
+  'regular': #606266,
+  'secondary': #909399,
+  'placeholder': #a8abb2,
+  'disabled': #c0c4cc,
+) !default;
+
+// 背景颜色
+$bg-color: (
+  '': #ffffff,
+  'page': #f2f3f5,
+  'overlay': #ffffff,
+) !default;
+
+// 边框颜色
+$border-color: (
+  '': #dcdfe6,
+  'light': #e4e7ed,
+  'lighter': #ebeef5,
+  'extra-light': #f2f6fc,
+  'dark': #d4d7de,
+  'darker': #cdd0d6,
+) !default;
+
+// 填充颜色
+$fill-color: (
+  '': #f0f2f5,
+  'light': #f5f7fa,
+  'lighter': #fafafa,
+  'extra-light': #fafcff,
+  'dark': #ebedf0,
+  'darker': #e6e8eb,
+  'blank': #ffffff,
+) !default;
+
+// 字体
+$font-family: (
+  '':
+    "'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif",
+) !default;
+
+// 字号
+$font-size: (
+  'extra-large': 20px,
+  'large': 18px,
+  'medium': 16px,
+  'base': 14px,
+  'small': 13px,
+  'extra-small': 12px,
+) !default;
+
+// 层级
+$z-index: (
+  'normal': 1,
+  'top': 1000,
+  'popper': 2000,
+) !default;
+
+// 圆角
+$border-radius: (
+  'base': 4px,
+  'small': 2px,
+  'round': 20px,
+  'circle': 100%,
+) !default;
+
+// 阴影
+$box-shadow: (
+  '': (
+    0px 12px 32px 4px rgba(0, 0, 0, 0.04),
+    0px 8px 20px rgba(0, 0, 0, 0.08),
+  ),
+  'light': (
+    0px 0px 12px rgba(0, 0, 0, 0.12),
+  ),
+  'lighter': (
+    0px 0px 6px rgba(0, 0, 0, 0.12),
+  ),
+  'dark': (
+    0px 16px 48px 16px rgba(0, 0, 0, 0.08),
+    0px 12px 32px rgba(0, 0, 0, 0.12),
+    0px 8px 16px -8px rgba(0, 0, 0, 0.16),
+  ),
+) !default;
+
+// 过渡动画
+$transition: (
+  'all': all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+  'fade': opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+  'md-fade': (
+    transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+  ),
+  'fade-linear': opacity 0.2s linear,
+  'border': border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+  'box-shadow': box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+  'color': color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+) !default;
+
+// 组件尺寸
+$common-component-size: (
+  'large': 40px,
+  'default': 32px,
+  'small': 24px,
+) !default;
+
+// 间距
+$spacing: (
+  'extra-large': 24px,
+  'large': 20px,
+  'medium': 16px,
+  'default': 12px,
+  'small': 8px,
+  'extra-small': 4px,
+) !default;

@@ -1,0 +1,7 @@
+// Table 组件样式
+@use '../common/var.scss' as *;
+
+.#{$namespace}-table {
+  // 继承 Element Plus 表格样式
+  // 可在此扩展自定义样式
+}

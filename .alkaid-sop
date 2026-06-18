@@ -1,0 +1,6 @@
+# Alkaid-SOP Project Configuration
+# Element Plus Component Library Wrapper
+
+project_name: alkaid-plus
+version: 1.0.0
+type: component-library

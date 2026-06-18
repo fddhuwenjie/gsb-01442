@@ -1,0 +1,93 @@
+// 基础样式
+@use './common/var.scss' as *;
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: #a8a8a8;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+// 选中文本样式
+::selection {
+  background-color: #409eff;
+  color: #fff;
+}
+
+// Alkaid Plus 命名空间基础类
+.#{$namespace} {
+  // 通用隐藏类
+  &-hidden {
+    display: none !important;
+  }
+
+  // 通用禁用类
+  &-disabled {
+    cursor: not-allowed !important;
+    opacity: 0.5;
+  }
+
+  // 通用加载类
+  &-loading {
+    pointer-events: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: 1;
+    }
+  }
+
+  // 过渡动画类
+  &-fade-enter-active,
+  &-fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  &-fade-enter-from,
+  &-fade-leave-to {
+    opacity: 0;
+  }
+
+  // 缩放动画
+  &-zoom-in-center-enter-active,
+  &-zoom-in-center-leave-active {
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  }
+
+  &-zoom-in-center-enter-from,
+  &-zoom-in-center-leave-to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  // 滑动动画
+  &-slide-down-enter-active,
+  &-slide-down-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  &-slide-down-enter-from,
+  &-slide-down-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}

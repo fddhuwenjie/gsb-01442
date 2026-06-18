@@ -1,0 +1,18 @@
+// Alkaid Plus Theme
+// 基于 Element Plus 的主题系统
+
+@use './common/var.scss' as *;
+@use './reset.scss';
+@use './base.scss';
+
+// 组件样式
+@use './components/button.scss';
+@use './components/input.scss';
+@use './components/select.scss';
+@use './components/table.scss';
+@use './components/dialog.scss';
+@use './components/form.scss';
+@use './components/menu.scss';
+@use './components/tabs.scss';
+@use './components/card.scss';
+@use './components/tag.scss';

@@ -1,0 +1,62 @@
+{
+  "name": "alkaid-plus",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Vue 3 component library based on Element Plus",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/*": "./dist/*",
+    "./resolver": {
+      "import": "./dist/resolver.mjs",
+      "require": "./dist/resolver.js",
+      "types": "./dist/resolver.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "global.d.ts"
+  ],
+  "keywords": [
+    "vue",
+    "vue3",
+    "element-plus",
+    "component-library",
+    "typescript",
+    "alkaid"
+  ],
+  "homepage": "https://github.com/alkaid-plus/alkaid-plus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alkaid-plus/alkaid-plus.git"
+  },
+  "scripts": {
+    "build": "vite build && pnpm build:resolver",
+    "build:resolver": "tsup src/resolver.ts --format cjs,esm --dts --clean --outDir dist"
+  },
+  "dependencies": {
+    "@alkaid-plus/components": "workspace:*",
+    "@alkaid-plus/hooks": "workspace:*",
+    "@alkaid-plus/utils": "workspace:*",
+    "@alkaid-plus/theme": "workspace:*",
+    "element-plus": "^2.5.3"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "tsup": "^8.0.1",
+    "vite": "^5.0.12",
+    "vite-plugin-dts": "^3.7.1",
+    "vue": "^3.4.15"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@alkaid-plus/play",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playground for Alkaid Plus development",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "alkaid-plus": "workspace:*",
+    "element-plus": "^2.5.3",
+    "vue": "^3.4.15"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.0.12"
+  }
+}
