@@ -1,5 +1,8 @@
 // Alkaid Plus Global Type Definitions
-// Auto-generated for IDE support
+// ===============================================
+//  ⚠️ 本文件由 scripts/refresh-registry.ts 自动生成
+//  请勿手动修改，新增组件后请运行 pnpm registry
+// ===============================================
 
 import type {
   AkButton,
@@ -9,76 +12,82 @@ import type {
   AkScrollbar,
   AkSpace,
   AkText,
-  AkInput,
-  AkInputNumber,
-  AkSelect,
-  AkOption,
-  AkOptionGroup,
+  AkAutocomplete,
   AkCascader,
+  AkCascaderPanel,
   AkCheckbox,
   AkCheckboxButton,
   AkCheckboxGroup,
+  AkColorPicker,
+  AkDatePicker,
+  AkForm,
+  AkFormItem,
+  AkInput,
+  AkInputNumber,
+  AkMention,
   AkRadio,
   AkRadioButton,
   AkRadioGroup,
+  AkRate,
+  AkSelect,
+  AkOption,
+  AkOptionGroup,
+  AkSlider,
   AkSwitch,
-  AkDatePicker,
   AkTimePicker,
   AkTimeSelect,
-  AkColorPicker,
-  AkRate,
-  AkSlider,
   AkUpload,
-  AkForm,
-  AkFormItem,
-  AkAutocomplete,
+  AkAvatar,
+  AkBadge,
+  AkDescriptions,
+  AkDescriptionsItem,
+  AkEmpty,
+  AkPagination,
+  AkProgress,
+  AkResult,
+  AkSegmented,
+  AkSkeleton,
+  AkSkeletonItem,
+  AkStatistic,
+  AkCountdown,
   AkTable,
   AkTableColumn,
   AkTag,
-  AkProgress,
   AkTree,
-  AkPagination,
-  AkBadge,
-  AkAvatar,
-  AkSkeleton,
-  AkSkeletonItem,
-  AkEmpty,
-  AkDescriptions,
-  AkDescriptionsItem,
-  AkResult,
-  AkStatistic,
-  AkCountdown,
-  AkMenu,
-  AkMenuItem,
-  AkMenuItemGroup,
-  AkSubMenu,
-  AkTabs,
-  AkTabPane,
+  AkTableV2,
+  AkAnchor,
+  AkAnchorLink,
   AkBreadcrumb,
   AkBreadcrumbItem,
   AkDropdown,
   AkDropdownMenu,
   AkDropdownItem,
+  AkMenu,
+  AkMenuItem,
+  AkMenuItemGroup,
+  AkSubMenu,
+  AkPageHeader,
   AkSteps,
   AkStep,
-  AkPageHeader,
+  AkTabs,
+  AkTabPane,
   AkAlert,
   AkDialog,
   AkDrawer,
   AkPopconfirm,
   AkPopover,
   AkTooltip,
+  AkCard,
+  AkCol,
+  AkCollapse,
+  AkCollapseItem,
   AkContainer,
   AkHeader,
   AkAside,
   AkMain,
   AkFooter,
-  AkRow,
-  AkCol,
   AkDivider,
-  AkCard,
-  AkCollapse,
-  AkCollapseItem,
+  AkRow,
   AkAffix,
   AkBacktop,
   AkCalendar,
@@ -88,16 +97,11 @@ import type {
   AkImageViewer,
   AkTimeline,
   AkTimelineItem,
-  AkTransfer,
-  AkTreeSelect,
-  AkTableV2,
-  AkWatermark,
   AkTour,
   AkTourStep,
-  AkAnchor,
-  AkAnchorLink,
-  AkSegmented,
-  AkMention,
+  AkTransfer,
+  AkTreeSelect,
+  AkWatermark,
 } from 'alkaid-plus'
 
 declare module '@vue/runtime-core' {
@@ -109,76 +113,82 @@ declare module '@vue/runtime-core' {
     AkScrollbar: typeof AkScrollbar
     AkSpace: typeof AkSpace
     AkText: typeof AkText
-    AkInput: typeof AkInput
-    AkInputNumber: typeof AkInputNumber
-    AkSelect: typeof AkSelect
-    AkOption: typeof AkOption
-    AkOptionGroup: typeof AkOptionGroup
+    AkAutocomplete: typeof AkAutocomplete
     AkCascader: typeof AkCascader
+    AkCascaderPanel: typeof AkCascaderPanel
     AkCheckbox: typeof AkCheckbox
     AkCheckboxButton: typeof AkCheckboxButton
     AkCheckboxGroup: typeof AkCheckboxGroup
+    AkColorPicker: typeof AkColorPicker
+    AkDatePicker: typeof AkDatePicker
+    AkForm: typeof AkForm
+    AkFormItem: typeof AkFormItem
+    AkInput: typeof AkInput
+    AkInputNumber: typeof AkInputNumber
+    AkMention: typeof AkMention
     AkRadio: typeof AkRadio
     AkRadioButton: typeof AkRadioButton
     AkRadioGroup: typeof AkRadioGroup
+    AkRate: typeof AkRate
+    AkSelect: typeof AkSelect
+    AkOption: typeof AkOption
+    AkOptionGroup: typeof AkOptionGroup
+    AkSlider: typeof AkSlider
     AkSwitch: typeof AkSwitch
-    AkDatePicker: typeof AkDatePicker
     AkTimePicker: typeof AkTimePicker
     AkTimeSelect: typeof AkTimeSelect
-    AkColorPicker: typeof AkColorPicker
-    AkRate: typeof AkRate
-    AkSlider: typeof AkSlider
     AkUpload: typeof AkUpload
-    AkForm: typeof AkForm
-    AkFormItem: typeof AkFormItem
-    AkAutocomplete: typeof AkAutocomplete
+    AkAvatar: typeof AkAvatar
+    AkBadge: typeof AkBadge
+    AkDescriptions: typeof AkDescriptions
+    AkDescriptionsItem: typeof AkDescriptionsItem
+    AkEmpty: typeof AkEmpty
+    AkPagination: typeof AkPagination
+    AkProgress: typeof AkProgress
+    AkResult: typeof AkResult
+    AkSegmented: typeof AkSegmented
+    AkSkeleton: typeof AkSkeleton
+    AkSkeletonItem: typeof AkSkeletonItem
+    AkStatistic: typeof AkStatistic
+    AkCountdown: typeof AkCountdown
     AkTable: typeof AkTable
     AkTableColumn: typeof AkTableColumn
     AkTag: typeof AkTag
-    AkProgress: typeof AkProgress
     AkTree: typeof AkTree
-    AkPagination: typeof AkPagination
-    AkBadge: typeof AkBadge
-    AkAvatar: typeof AkAvatar
-    AkSkeleton: typeof AkSkeleton
-    AkSkeletonItem: typeof AkSkeletonItem
-    AkEmpty: typeof AkEmpty
-    AkDescriptions: typeof AkDescriptions
-    AkDescriptionsItem: typeof AkDescriptionsItem
-    AkResult: typeof AkResult
-    AkStatistic: typeof AkStatistic
-    AkCountdown: typeof AkCountdown
-    AkMenu: typeof AkMenu
-    AkMenuItem: typeof AkMenuItem
-    AkMenuItemGroup: typeof AkMenuItemGroup
-    AkSubMenu: typeof AkSubMenu
-    AkTabs: typeof AkTabs
-    AkTabPane: typeof AkTabPane
+    AkTableV2: typeof AkTableV2
+    AkAnchor: typeof AkAnchor
+    AkAnchorLink: typeof AkAnchorLink
     AkBreadcrumb: typeof AkBreadcrumb
     AkBreadcrumbItem: typeof AkBreadcrumbItem
     AkDropdown: typeof AkDropdown
     AkDropdownMenu: typeof AkDropdownMenu
     AkDropdownItem: typeof AkDropdownItem
+    AkMenu: typeof AkMenu
+    AkMenuItem: typeof AkMenuItem
+    AkMenuItemGroup: typeof AkMenuItemGroup
+    AkSubMenu: typeof AkSubMenu
+    AkPageHeader: typeof AkPageHeader
     AkSteps: typeof AkSteps
     AkStep: typeof AkStep
-    AkPageHeader: typeof AkPageHeader
+    AkTabs: typeof AkTabs
+    AkTabPane: typeof AkTabPane
     AkAlert: typeof AkAlert
     AkDialog: typeof AkDialog
     AkDrawer: typeof AkDrawer
     AkPopconfirm: typeof AkPopconfirm
     AkPopover: typeof AkPopover
     AkTooltip: typeof AkTooltip
+    AkCard: typeof AkCard
+    AkCol: typeof AkCol
+    AkCollapse: typeof AkCollapse
+    AkCollapseItem: typeof AkCollapseItem
     AkContainer: typeof AkContainer
     AkHeader: typeof AkHeader
     AkAside: typeof AkAside
     AkMain: typeof AkMain
     AkFooter: typeof AkFooter
-    AkRow: typeof AkRow
-    AkCol: typeof AkCol
     AkDivider: typeof AkDivider
-    AkCard: typeof AkCard
-    AkCollapse: typeof AkCollapse
-    AkCollapseItem: typeof AkCollapseItem
+    AkRow: typeof AkRow
     AkAffix: typeof AkAffix
     AkBacktop: typeof AkBacktop
     AkCalendar: typeof AkCalendar
@@ -188,16 +198,11 @@ declare module '@vue/runtime-core' {
     AkImageViewer: typeof AkImageViewer
     AkTimeline: typeof AkTimeline
     AkTimelineItem: typeof AkTimelineItem
-    AkTransfer: typeof AkTransfer
-    AkTreeSelect: typeof AkTreeSelect
-    AkTableV2: typeof AkTableV2
-    AkWatermark: typeof AkWatermark
     AkTour: typeof AkTour
     AkTourStep: typeof AkTourStep
-    AkAnchor: typeof AkAnchor
-    AkAnchorLink: typeof AkAnchorLink
-    AkSegmented: typeof AkSegmented
-    AkMention: typeof AkMention
+    AkTransfer: typeof AkTransfer
+    AkTreeSelect: typeof AkTreeSelect
+    AkWatermark: typeof AkWatermark
   }
 }
 

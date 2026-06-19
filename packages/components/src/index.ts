@@ -1,5 +1,9 @@
 // Alkaid Plus Components
 // 基于 Element Plus 的二次封装组件库
+// ===============================================
+//  ⚠️ 本文件由 scripts/refresh-registry.ts 自动生成
+//  请勿手动修改，新增组件后请运行 pnpm registry
+// ===============================================
 
 // Basic 基础组件
 export * from './button'
@@ -10,65 +14,69 @@ export * from './space'
 export * from './text'
 
 // Form 表单组件
-export * from './input'
-export * from './input-number'
-export * from './select'
+export * from './autocomplete'
 export * from './cascader'
 export * from './checkbox'
-export * from './radio'
-export * from './switch'
-export * from './date-picker'
-export * from './time-picker'
 export * from './color-picker'
-export * from './rate'
-export * from './slider'
-export * from './upload'
+export * from './date-picker'
 export * from './form'
-export * from './autocomplete'
+export * from './input'
+export * from './input-number'
+export * from './mention'
+export * from './radio'
+export * from './rate'
+export * from './select'
+export * from './slider'
+export * from './switch'
+export * from './time-picker'
+export * from './upload'
 
-// Data 数据展示组件
+// Data 数据展示
+export * from './avatar'
+export * from './badge'
+export * from './descriptions'
+export * from './empty'
+export * from './pagination'
+export * from './progress'
+export * from './result'
+export * from './segmented'
+export * from './skeleton'
+export * from './statistic'
 export * from './table'
 export * from './tag'
-export * from './progress'
 export * from './tree'
-export * from './pagination'
-export * from './badge'
-export * from './avatar'
-export * from './skeleton'
-export * from './empty'
-export * from './descriptions'
-export * from './result'
-export * from './statistic'
+export * from './virtualized-table'
 
-// Navigation 导航组件
-export * from './menu'
-export * from './tabs'
+// Navigation 导航
+export * from './anchor'
 export * from './breadcrumb'
 export * from './dropdown'
-export * from './steps'
+export * from './menu'
 export * from './page-header'
+export * from './steps'
+export * from './tabs'
 
-// Feedback 反馈组件
+// Feedback 反馈
 export * from './alert'
 export * from './dialog'
 export * from './drawer'
+export * from './loading'
 export * from './message'
 export * from './message-box'
 export * from './notification'
-export * from './loading'
 export * from './popconfirm'
 export * from './popover'
 export * from './tooltip'
 
-// Layout 布局组件
-export * from './container'
-export * from './row'
-export * from './col'
-export * from './divider'
+// Layout 布局
 export * from './card'
+export * from './col'
 export * from './collapse'
+export * from './container'
+export * from './divider'
+export * from './row'
 
-// Others 其他组件
+// Others 其他
 export * from './affix'
 export * from './backtop'
 export * from './calendar'
@@ -76,11 +84,7 @@ export * from './carousel'
 export * from './image'
 export * from './infinite-scroll'
 export * from './timeline'
+export * from './tour'
 export * from './transfer'
 export * from './tree-select'
-export * from './virtualized-table'
 export * from './watermark'
-export * from './tour'
-export * from './anchor'
-export * from './segmented'
-export * from './mention'

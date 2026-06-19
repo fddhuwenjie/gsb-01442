@@ -1,4 +1,5 @@
 import type { ComponentResolver, ComponentInfo } from 'unplugin-vue-components'
+import { componentStyleMap, directiveStyleMap } from './component-map.generated'
 
 export interface AlkaidPlusResolverOptions {
   /**
@@ -38,121 +39,9 @@ export interface AlkaidPlusResolverOptions {
   autoImportElementPlus?: boolean
 }
 
-// 所有 Alkaid Plus 组件映射到对应的 Element Plus 组件
-const components: Record<string, string> = {
-  // Basic
-  AkButton: 'button',
-  AkButtonGroup: 'button',
-  AkIcon: 'icon',
-  AkLink: 'link',
-  AkScrollbar: 'scrollbar',
-  AkSpace: 'space',
-  AkText: 'text',
-
-  // Form
-  AkInput: 'input',
-  AkInputNumber: 'input-number',
-  AkSelect: 'select',
-  AkOption: 'select',
-  AkOptionGroup: 'select',
-  AkCascader: 'cascader',
-  AkCascaderPanel: 'cascader',
-  AkCheckbox: 'checkbox',
-  AkCheckboxButton: 'checkbox',
-  AkCheckboxGroup: 'checkbox',
-  AkRadio: 'radio',
-  AkRadioButton: 'radio',
-  AkRadioGroup: 'radio',
-  AkSwitch: 'switch',
-  AkDatePicker: 'date-picker',
-  AkTimePicker: 'time-picker',
-  AkTimeSelect: 'time-select',
-  AkColorPicker: 'color-picker',
-  AkRate: 'rate',
-  AkSlider: 'slider',
-  AkUpload: 'upload',
-  AkForm: 'form',
-  AkFormItem: 'form',
-  AkAutocomplete: 'autocomplete',
-
-  // Data
-  AkTable: 'table',
-  AkTableColumn: 'table',
-  AkTag: 'tag',
-  AkProgress: 'progress',
-  AkTree: 'tree',
-  AkPagination: 'pagination',
-  AkBadge: 'badge',
-  AkAvatar: 'avatar',
-  AkSkeleton: 'skeleton',
-  AkSkeletonItem: 'skeleton',
-  AkEmpty: 'empty',
-  AkDescriptions: 'descriptions',
-  AkDescriptionsItem: 'descriptions',
-  AkResult: 'result',
-  AkStatistic: 'statistic',
-  AkCountdown: 'countdown',
-
-  // Navigation
-  AkMenu: 'menu',
-  AkMenuItem: 'menu',
-  AkMenuItemGroup: 'menu',
-  AkSubMenu: 'menu',
-  AkTabs: 'tabs',
-  AkTabPane: 'tabs',
-  AkBreadcrumb: 'breadcrumb',
-  AkBreadcrumbItem: 'breadcrumb',
-  AkDropdown: 'dropdown',
-  AkDropdownMenu: 'dropdown',
-  AkDropdownItem: 'dropdown',
-  AkSteps: 'steps',
-  AkStep: 'steps',
-  AkPageHeader: 'page-header',
-
-  // Feedback
-  AkAlert: 'alert',
-  AkDialog: 'dialog',
-  AkDrawer: 'drawer',
-  AkPopconfirm: 'popconfirm',
-  AkPopover: 'popover',
-  AkTooltip: 'tooltip',
-
-  // Layout
-  AkContainer: 'container',
-  AkHeader: 'container',
-  AkAside: 'container',
-  AkMain: 'container',
-  AkFooter: 'container',
-  AkRow: 'row',
-  AkCol: 'col',
-  AkDivider: 'divider',
-  AkCard: 'card',
-  AkCollapse: 'collapse',
-  AkCollapseItem: 'collapse',
-
-  // Others
-  AkAffix: 'affix',
-  AkBacktop: 'backtop',
-  AkCalendar: 'calendar',
-  AkCarousel: 'carousel',
-  AkCarouselItem: 'carousel',
-  AkImage: 'image',
-  AkImageViewer: 'image',
-  AkTimeline: 'timeline',
-  AkTimelineItem: 'timeline',
-  AkTransfer: 'transfer',
-  AkTreeSelect: 'tree-select',
-  AkTableV2: 'table-v2',
-  AkWatermark: 'watermark',
-  AkTour: 'tour',
-  AkTourStep: 'tour',
-  AkAnchor: 'anchor',
-  AkAnchorLink: 'anchor',
-  AkSegmented: 'segmented',
-  AkMention: 'mention',
-}
-
-// 将 PascalCase 转换为 kebab-case
+/**
+ * 将 PascalCase 转换为 kebab-case（去除 Ak 前缀）
+ */
 function toKebabCase(str: string): string {
   return str
     .replace(/^Ak/, '')
@@ -184,39 +73,32 @@ export function AkResolver(options: AlkaidPlusResolverOptions = {}): ComponentRe
     useElementPlusStyle = true,
     prefix = 'Ak',
     exclude = [],
-    directives = true,
-    autoImportElementPlus = true,
   } = options
 
   return {
     type: 'component',
     resolve: (name: string): ComponentInfo | undefined => {
-      // 检查是否是 Alkaid Plus 组件
       if (!name.startsWith(prefix)) {
         return undefined
       }
 
-      // 检查是否在排除列表中
       if (exclude.includes(name)) {
         return undefined
       }
 
-      // 检查组件是否存在
-      const componentName = name
-      if (!(componentName in components)) {
+      if (!(name in componentStyleMap)) {
         return undefined
       }
 
-      const elComponentName = components[componentName]
+      const elComponentName = componentStyleMap[name]
       const kebabName = toKebabCase(name)
+      void kebabName
 
-      // 构建导入信息
       const result: ComponentInfo = {
-        name: componentName,
+        name,
         from: 'alkaid-plus',
       }
 
-      // 处理样式导入
       if (importStyle && useElementPlusStyle) {
         if (importStyle === 'sass') {
           result.sideEffects = `element-plus/es/components/${elComponentName}/style/index`
@@ -238,23 +120,23 @@ export function AkDirectiveResolver(
 ): ComponentResolver {
   const { importStyle = 'css', useElementPlusStyle = true } = options
 
-  const directives: Record<string, string> = {
-    Loading: 'loading',
-    InfiniteScroll: 'infinite-scroll',
-  }
-
   return {
     type: 'directive',
     resolve: (name: string): ComponentInfo | undefined => {
-      if (!(name in directives)) {
+      if (!(name in directiveStyleMap)) {
         return undefined
       }
 
-      const elDirectiveName = directives[name]
+      const elDirectiveName = directiveStyleMap[name]
 
       const result: ComponentInfo = {
         name: `Ak${name}Directive`,
         from: 'alkaid-plus',
+      }
+
+      // 特殊处理：InfiniteScroll 导出名称为 AkInfiniteScroll（无 Directive 后缀）
+      if (name === 'InfiniteScroll') {
+        result.name = 'AkInfiniteScroll'
       }
 
       if (importStyle && useElementPlusStyle) {
