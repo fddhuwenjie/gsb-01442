@@ -28,7 +28,8 @@
     "test": "vitest",
     "clean": "rimraf node_modules **/node_modules **/dist",
     "prepare": "husky install",
-    "gen": "tsx scripts/gen-component.ts"
+    "gen": "tsx scripts/gen-component.ts",
+    "registry": "tsx scripts/refresh-registry.ts"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
