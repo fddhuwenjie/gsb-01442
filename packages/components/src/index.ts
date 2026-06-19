@@ -1,5 +1,6 @@
 // Alkaid Plus Components
 // 基于 Element Plus 的二次封装组件库
+// 此文件由 scripts/sync-components.ts 自动生成，请勿手动修改
 
 // Basic 基础组件
 export * from './button'
@@ -26,7 +27,7 @@ export * from './upload'
 export * from './form'
 export * from './autocomplete'
 
-// Data 数据展示组件
+// Data 数据展示
 export * from './table'
 export * from './tag'
 export * from './progress'
@@ -40,7 +41,7 @@ export * from './descriptions'
 export * from './result'
 export * from './statistic'
 
-// Navigation 导航组件
+// Navigation 导航
 export * from './menu'
 export * from './tabs'
 export * from './breadcrumb'
@@ -48,7 +49,7 @@ export * from './dropdown'
 export * from './steps'
 export * from './page-header'
 
-// Feedback 反馈组件
+// Feedback 反馈
 export * from './alert'
 export * from './dialog'
 export * from './drawer'
@@ -60,7 +61,7 @@ export * from './popconfirm'
 export * from './popover'
 export * from './tooltip'
 
-// Layout 布局组件
+// Layout 布局
 export * from './container'
 export * from './row'
 export * from './col'
@@ -68,7 +69,7 @@ export * from './divider'
 export * from './card'
 export * from './collapse'
 
-// Others 其他组件
+// Others 其他
 export * from './affix'
 export * from './backtop'
 export * from './calendar'
@@ -84,3 +85,4 @@ export * from './tour'
 export * from './anchor'
 export * from './segmented'
 export * from './mention'
+

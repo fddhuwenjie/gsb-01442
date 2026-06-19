@@ -39,8 +39,8 @@ export interface AlkaidPlusResolverOptions {
 }
 
 // 所有 Alkaid Plus 组件映射到对应的 Element Plus 组件
+// 此映射由 scripts/sync-components.ts 自动生成
 const components: Record<string, string> = {
-  // Basic
   AkButton: 'button',
   AkButtonGroup: 'button',
   AkIcon: 'icon',
@@ -48,15 +48,12 @@ const components: Record<string, string> = {
   AkScrollbar: 'scrollbar',
   AkSpace: 'space',
   AkText: 'text',
-
-  // Form
   AkInput: 'input',
   AkInputNumber: 'input-number',
   AkSelect: 'select',
   AkOption: 'select',
   AkOptionGroup: 'select',
   AkCascader: 'cascader',
-  AkCascaderPanel: 'cascader',
   AkCheckbox: 'checkbox',
   AkCheckboxButton: 'checkbox',
   AkCheckboxGroup: 'checkbox',
@@ -74,8 +71,6 @@ const components: Record<string, string> = {
   AkForm: 'form',
   AkFormItem: 'form',
   AkAutocomplete: 'autocomplete',
-
-  // Data
   AkTable: 'table',
   AkTableColumn: 'table',
   AkTag: 'tag',
@@ -91,9 +86,7 @@ const components: Record<string, string> = {
   AkDescriptionsItem: 'descriptions',
   AkResult: 'result',
   AkStatistic: 'statistic',
-  AkCountdown: 'countdown',
-
-  // Navigation
+  AkCountdown: 'statistic',
   AkMenu: 'menu',
   AkMenuItem: 'menu',
   AkMenuItemGroup: 'menu',
@@ -108,16 +101,16 @@ const components: Record<string, string> = {
   AkSteps: 'steps',
   AkStep: 'steps',
   AkPageHeader: 'page-header',
-
-  // Feedback
   AkAlert: 'alert',
   AkDialog: 'dialog',
   AkDrawer: 'drawer',
+  AkMessage: 'message',
+  AkMessageBox: 'message-box',
+  AkNotification: 'notification',
+  AkLoading: 'loading',
   AkPopconfirm: 'popconfirm',
   AkPopover: 'popover',
   AkTooltip: 'tooltip',
-
-  // Layout
   AkContainer: 'container',
   AkHeader: 'container',
   AkAside: 'container',
@@ -129,8 +122,6 @@ const components: Record<string, string> = {
   AkCard: 'card',
   AkCollapse: 'collapse',
   AkCollapseItem: 'collapse',
-
-  // Others
   AkAffix: 'affix',
   AkBacktop: 'backtop',
   AkCalendar: 'calendar',
@@ -138,11 +129,12 @@ const components: Record<string, string> = {
   AkCarouselItem: 'carousel',
   AkImage: 'image',
   AkImageViewer: 'image',
+  AkInfiniteScroll: 'infinite-scroll',
   AkTimeline: 'timeline',
   AkTimelineItem: 'timeline',
   AkTransfer: 'transfer',
   AkTreeSelect: 'tree-select',
-  AkTableV2: 'table-v2',
+  AkTableV2: 'virtualized-table',
   AkWatermark: 'watermark',
   AkTour: 'tour',
   AkTourStep: 'tour',
@@ -191,17 +183,14 @@ export function AkResolver(options: AlkaidPlusResolverOptions = {}): ComponentRe
   return {
     type: 'component',
     resolve: (name: string): ComponentInfo | undefined => {
-      // 检查是否是 Alkaid Plus 组件
       if (!name.startsWith(prefix)) {
         return undefined
       }
 
-      // 检查是否在排除列表中
       if (exclude.includes(name)) {
         return undefined
       }
 
-      // 检查组件是否存在
       const componentName = name
       if (!(componentName in components)) {
         return undefined
@@ -210,13 +199,11 @@ export function AkResolver(options: AlkaidPlusResolverOptions = {}): ComponentRe
       const elComponentName = components[componentName]
       const kebabName = toKebabCase(name)
 
-      // 构建导入信息
       const result: ComponentInfo = {
         name: componentName,
         from: 'alkaid-plus',
       }
 
-      // 处理样式导入
       if (importStyle && useElementPlusStyle) {
         if (importStyle === 'sass') {
           result.sideEffects = `element-plus/es/components/${elComponentName}/style/index`
