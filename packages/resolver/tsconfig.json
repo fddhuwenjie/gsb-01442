@@ -2,8 +2,17 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "baseUrl": ".",
+    "paths": {
+      "@alkaid-plus/components/manifest": [
+        "../components/src/manifest.ts"
+      ],
+      "@alkaid-plus/*": ["../*/src"]
+    }
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "../components/src/manifest.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,4 +1,15 @@
 import type { ComponentResolver, ComponentInfo } from 'unplugin-vue-components'
+// 走 monorepo tsconfig paths（@alkaid-plus/* → packages/*\/src）解析到
+// `packages/components/src/manifest.ts`。
+// 在 tsup 构建时，由 tsup.config.ts 中的 esbuildOptions.alias 把它显式
+// 重写为绝对源码路径，并通过 noExternal 把 manifest 内联进 resolver 自己的 dist；
+// 这样源码态、构建态、发布态三种情况下都能稳定解析，且发布产物不依赖
+// `@alkaid-plus/components` 是否预先生成 dist。
+import {
+  buildResolverComponentMap,
+  COMPONENT_PREFIX,
+  DIRECTIVE_MANIFEST,
+} from '@alkaid-plus/components/manifest'
 
 export interface AlkaidPlusResolverOptions {
   /**
@@ -38,130 +49,11 @@ export interface AlkaidPlusResolverOptions {
   autoImportElementPlus?: boolean
 }
 
-// 所有 Alkaid Plus 组件映射到对应的 Element Plus 组件
-const components: Record<string, string> = {
-  // Basic
-  AkButton: 'button',
-  AkButtonGroup: 'button',
-  AkIcon: 'icon',
-  AkLink: 'link',
-  AkScrollbar: 'scrollbar',
-  AkSpace: 'space',
-  AkText: 'text',
-
-  // Form
-  AkInput: 'input',
-  AkInputNumber: 'input-number',
-  AkSelect: 'select',
-  AkOption: 'select',
-  AkOptionGroup: 'select',
-  AkCascader: 'cascader',
-  AkCascaderPanel: 'cascader',
-  AkCheckbox: 'checkbox',
-  AkCheckboxButton: 'checkbox',
-  AkCheckboxGroup: 'checkbox',
-  AkRadio: 'radio',
-  AkRadioButton: 'radio',
-  AkRadioGroup: 'radio',
-  AkSwitch: 'switch',
-  AkDatePicker: 'date-picker',
-  AkTimePicker: 'time-picker',
-  AkTimeSelect: 'time-select',
-  AkColorPicker: 'color-picker',
-  AkRate: 'rate',
-  AkSlider: 'slider',
-  AkUpload: 'upload',
-  AkForm: 'form',
-  AkFormItem: 'form',
-  AkAutocomplete: 'autocomplete',
-
-  // Data
-  AkTable: 'table',
-  AkTableColumn: 'table',
-  AkTag: 'tag',
-  AkProgress: 'progress',
-  AkTree: 'tree',
-  AkPagination: 'pagination',
-  AkBadge: 'badge',
-  AkAvatar: 'avatar',
-  AkSkeleton: 'skeleton',
-  AkSkeletonItem: 'skeleton',
-  AkEmpty: 'empty',
-  AkDescriptions: 'descriptions',
-  AkDescriptionsItem: 'descriptions',
-  AkResult: 'result',
-  AkStatistic: 'statistic',
-  AkCountdown: 'countdown',
-
-  // Navigation
-  AkMenu: 'menu',
-  AkMenuItem: 'menu',
-  AkMenuItemGroup: 'menu',
-  AkSubMenu: 'menu',
-  AkTabs: 'tabs',
-  AkTabPane: 'tabs',
-  AkBreadcrumb: 'breadcrumb',
-  AkBreadcrumbItem: 'breadcrumb',
-  AkDropdown: 'dropdown',
-  AkDropdownMenu: 'dropdown',
-  AkDropdownItem: 'dropdown',
-  AkSteps: 'steps',
-  AkStep: 'steps',
-  AkPageHeader: 'page-header',
-
-  // Feedback
-  AkAlert: 'alert',
-  AkDialog: 'dialog',
-  AkDrawer: 'drawer',
-  AkPopconfirm: 'popconfirm',
-  AkPopover: 'popover',
-  AkTooltip: 'tooltip',
-
-  // Layout
-  AkContainer: 'container',
-  AkHeader: 'container',
-  AkAside: 'container',
-  AkMain: 'container',
-  AkFooter: 'container',
-  AkRow: 'row',
-  AkCol: 'col',
-  AkDivider: 'divider',
-  AkCard: 'card',
-  AkCollapse: 'collapse',
-  AkCollapseItem: 'collapse',
-
-  // Others
-  AkAffix: 'affix',
-  AkBacktop: 'backtop',
-  AkCalendar: 'calendar',
-  AkCarousel: 'carousel',
-  AkCarouselItem: 'carousel',
-  AkImage: 'image',
-  AkImageViewer: 'image',
-  AkTimeline: 'timeline',
-  AkTimelineItem: 'timeline',
-  AkTransfer: 'transfer',
-  AkTreeSelect: 'tree-select',
-  AkTableV2: 'table-v2',
-  AkWatermark: 'watermark',
-  AkTour: 'tour',
-  AkTourStep: 'tour',
-  AkAnchor: 'anchor',
-  AkAnchorLink: 'anchor',
-  AkSegmented: 'segmented',
-  AkMention: 'mention',
-}
-
-// 将 PascalCase 转换为 kebab-case
-function toKebabCase(str: string): string {
-  return str
-    .replace(/^Ak/, '')
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .toLowerCase()
-}
-
 /**
  * Alkaid Plus 组件解析器
+ *
+ * 注意：组件名映射现已从 @alkaid-plus/components/manifest 派生，
+ * 不再在本文件中重复维护。新增组件时只需更新 manifest，本 resolver 自动生效。
  *
  * @example
  * ```ts
@@ -182,11 +74,15 @@ export function AkResolver(options: AlkaidPlusResolverOptions = {}): ComponentRe
   const {
     importStyle = 'css',
     useElementPlusStyle = true,
-    prefix = 'Ak',
+    prefix = COMPONENT_PREFIX,
     exclude = [],
-    directives = true,
-    autoImportElementPlus = true,
   } = options
+
+  // 按调用方传入的 prefix 重新展开 manifest，保证用户自定义前缀仍可用
+  const components =
+    prefix === COMPONENT_PREFIX
+      ? buildResolverComponentMap()
+      : buildResolverComponentMap(prefix)
 
   return {
     type: 'component',
@@ -208,7 +104,6 @@ export function AkResolver(options: AlkaidPlusResolverOptions = {}): ComponentRe
       }
 
       const elComponentName = components[componentName]
-      const kebabName = toKebabCase(name)
 
       // 构建导入信息
       const result: ComponentInfo = {
@@ -238,10 +133,10 @@ export function AkDirectiveResolver(
 ): ComponentResolver {
   const { importStyle = 'css', useElementPlusStyle = true } = options
 
-  const directives: Record<string, string> = {
-    Loading: 'loading',
-    InfiniteScroll: 'infinite-scroll',
-  }
+  // 由 manifest 派生
+  const directives: Record<string, string> = Object.fromEntries(
+    DIRECTIVE_MANIFEST.map((d) => [d.name, d.elStyle])
+  )
 
   return {
     type: 'directive',

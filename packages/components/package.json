@@ -12,6 +12,11 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./manifest": {
+      "import": "./dist/manifest.mjs",
+      "require": "./dist/manifest.js",
+      "types": "./dist/manifest.d.ts"
+    },
     "./*": {
       "import": "./dist/*/index.mjs",
       "require": "./dist/*/index.js",

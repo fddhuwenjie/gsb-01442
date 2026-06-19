@@ -1,6 +1,12 @@
 // Alkaid Plus Components
 // 基于 Element Plus 的二次封装组件库
 
+// 组件清单（中央登记处，下游 resolver / 全量安装器 / 文档站均从此派生）
+export * from './manifest'
+
+// 由 manifest 派生的全量安装组件数组（供 alkaid-plus 总入口消费）
+export { installableComponents } from './installable'
+
 // Basic 基础组件
 export * from './button'
 export * from './icon'

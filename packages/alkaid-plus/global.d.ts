@@ -1,204 +1,28 @@
 // Alkaid Plus Global Type Definitions
-// Auto-generated for IDE support
+// 由 @alkaid-plus/components/manifest 派生，无需手工维护组件清单。
+//
+// 实现方式：通过 namespace import 把 alkaid-plus 整个模块当作一个对象类型，
+// 然后用映射类型把所有以 `Ak` 开头的导出按同名形式塞进 GlobalComponents。
+// 这样新增组件只要在 manifest + components 主入口暴露 AkXxx，IDE 和 volar
+// 立刻就能识别，不用再手工同步本文件。
 
-import type {
-  AkButton,
-  AkButtonGroup,
-  AkIcon,
-  AkLink,
-  AkScrollbar,
-  AkSpace,
-  AkText,
-  AkInput,
-  AkInputNumber,
-  AkSelect,
-  AkOption,
-  AkOptionGroup,
-  AkCascader,
-  AkCheckbox,
-  AkCheckboxButton,
-  AkCheckboxGroup,
-  AkRadio,
-  AkRadioButton,
-  AkRadioGroup,
-  AkSwitch,
-  AkDatePicker,
-  AkTimePicker,
-  AkTimeSelect,
-  AkColorPicker,
-  AkRate,
-  AkSlider,
-  AkUpload,
-  AkForm,
-  AkFormItem,
-  AkAutocomplete,
-  AkTable,
-  AkTableColumn,
-  AkTag,
-  AkProgress,
-  AkTree,
-  AkPagination,
-  AkBadge,
-  AkAvatar,
-  AkSkeleton,
-  AkSkeletonItem,
-  AkEmpty,
-  AkDescriptions,
-  AkDescriptionsItem,
-  AkResult,
-  AkStatistic,
-  AkCountdown,
-  AkMenu,
-  AkMenuItem,
-  AkMenuItemGroup,
-  AkSubMenu,
-  AkTabs,
-  AkTabPane,
-  AkBreadcrumb,
-  AkBreadcrumbItem,
-  AkDropdown,
-  AkDropdownMenu,
-  AkDropdownItem,
-  AkSteps,
-  AkStep,
-  AkPageHeader,
-  AkAlert,
-  AkDialog,
-  AkDrawer,
-  AkPopconfirm,
-  AkPopover,
-  AkTooltip,
-  AkContainer,
-  AkHeader,
-  AkAside,
-  AkMain,
-  AkFooter,
-  AkRow,
-  AkCol,
-  AkDivider,
-  AkCard,
-  AkCollapse,
-  AkCollapseItem,
-  AkAffix,
-  AkBacktop,
-  AkCalendar,
-  AkCarousel,
-  AkCarouselItem,
-  AkImage,
-  AkImageViewer,
-  AkTimeline,
-  AkTimelineItem,
-  AkTransfer,
-  AkTreeSelect,
-  AkTableV2,
-  AkWatermark,
-  AkTour,
-  AkTourStep,
-  AkAnchor,
-  AkAnchorLink,
-  AkSegmented,
-  AkMention,
-} from 'alkaid-plus'
+import type * as AlkaidPlus from 'alkaid-plus'
+
+type AlkaidExports = typeof AlkaidPlus
+
+/** 提取所有以 Ak 开头的导出 key */
+type AlkaidComponentKeys = {
+  [K in keyof AlkaidExports]: K extends `Ak${string}` ? K : never
+}[keyof AlkaidExports]
+
+/** 把这些 Ak* 导出映射成 GlobalComponents 的同名条目 */
+type AlkaidGlobalComponents = {
+  [K in AlkaidComponentKeys]: AlkaidExports[K]
+}
 
 declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    AkButton: typeof AkButton
-    AkButtonGroup: typeof AkButtonGroup
-    AkIcon: typeof AkIcon
-    AkLink: typeof AkLink
-    AkScrollbar: typeof AkScrollbar
-    AkSpace: typeof AkSpace
-    AkText: typeof AkText
-    AkInput: typeof AkInput
-    AkInputNumber: typeof AkInputNumber
-    AkSelect: typeof AkSelect
-    AkOption: typeof AkOption
-    AkOptionGroup: typeof AkOptionGroup
-    AkCascader: typeof AkCascader
-    AkCheckbox: typeof AkCheckbox
-    AkCheckboxButton: typeof AkCheckboxButton
-    AkCheckboxGroup: typeof AkCheckboxGroup
-    AkRadio: typeof AkRadio
-    AkRadioButton: typeof AkRadioButton
-    AkRadioGroup: typeof AkRadioGroup
-    AkSwitch: typeof AkSwitch
-    AkDatePicker: typeof AkDatePicker
-    AkTimePicker: typeof AkTimePicker
-    AkTimeSelect: typeof AkTimeSelect
-    AkColorPicker: typeof AkColorPicker
-    AkRate: typeof AkRate
-    AkSlider: typeof AkSlider
-    AkUpload: typeof AkUpload
-    AkForm: typeof AkForm
-    AkFormItem: typeof AkFormItem
-    AkAutocomplete: typeof AkAutocomplete
-    AkTable: typeof AkTable
-    AkTableColumn: typeof AkTableColumn
-    AkTag: typeof AkTag
-    AkProgress: typeof AkProgress
-    AkTree: typeof AkTree
-    AkPagination: typeof AkPagination
-    AkBadge: typeof AkBadge
-    AkAvatar: typeof AkAvatar
-    AkSkeleton: typeof AkSkeleton
-    AkSkeletonItem: typeof AkSkeletonItem
-    AkEmpty: typeof AkEmpty
-    AkDescriptions: typeof AkDescriptions
-    AkDescriptionsItem: typeof AkDescriptionsItem
-    AkResult: typeof AkResult
-    AkStatistic: typeof AkStatistic
-    AkCountdown: typeof AkCountdown
-    AkMenu: typeof AkMenu
-    AkMenuItem: typeof AkMenuItem
-    AkMenuItemGroup: typeof AkMenuItemGroup
-    AkSubMenu: typeof AkSubMenu
-    AkTabs: typeof AkTabs
-    AkTabPane: typeof AkTabPane
-    AkBreadcrumb: typeof AkBreadcrumb
-    AkBreadcrumbItem: typeof AkBreadcrumbItem
-    AkDropdown: typeof AkDropdown
-    AkDropdownMenu: typeof AkDropdownMenu
-    AkDropdownItem: typeof AkDropdownItem
-    AkSteps: typeof AkSteps
-    AkStep: typeof AkStep
-    AkPageHeader: typeof AkPageHeader
-    AkAlert: typeof AkAlert
-    AkDialog: typeof AkDialog
-    AkDrawer: typeof AkDrawer
-    AkPopconfirm: typeof AkPopconfirm
-    AkPopover: typeof AkPopover
-    AkTooltip: typeof AkTooltip
-    AkContainer: typeof AkContainer
-    AkHeader: typeof AkHeader
-    AkAside: typeof AkAside
-    AkMain: typeof AkMain
-    AkFooter: typeof AkFooter
-    AkRow: typeof AkRow
-    AkCol: typeof AkCol
-    AkDivider: typeof AkDivider
-    AkCard: typeof AkCard
-    AkCollapse: typeof AkCollapse
-    AkCollapseItem: typeof AkCollapseItem
-    AkAffix: typeof AkAffix
-    AkBacktop: typeof AkBacktop
-    AkCalendar: typeof AkCalendar
-    AkCarousel: typeof AkCarousel
-    AkCarouselItem: typeof AkCarouselItem
-    AkImage: typeof AkImage
-    AkImageViewer: typeof AkImageViewer
-    AkTimeline: typeof AkTimeline
-    AkTimelineItem: typeof AkTimelineItem
-    AkTransfer: typeof AkTransfer
-    AkTreeSelect: typeof AkTreeSelect
-    AkTableV2: typeof AkTableV2
-    AkWatermark: typeof AkWatermark
-    AkTour: typeof AkTour
-    AkTourStep: typeof AkTourStep
-    AkAnchor: typeof AkAnchor
-    AkAnchorLink: typeof AkAnchorLink
-    AkSegmented: typeof AkSegmented
-    AkMention: typeof AkMention
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface GlobalComponents extends AlkaidGlobalComponents {}
 }
 
 export {}

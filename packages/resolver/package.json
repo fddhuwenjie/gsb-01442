@@ -8,19 +8,20 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
   "files": ["dist"],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean"
+    "build": "tsup"
   },
   "peerDependencies": {
     "unplugin-vue-components": ">=0.22.0"
   },
   "devDependencies": {
+    "@alkaid-plus/components": "workspace:*",
     "tsup": "^8.0.1",
     "unplugin-vue-components": "^0.26.0"
   }

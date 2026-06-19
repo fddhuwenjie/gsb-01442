@@ -1,4 +1,23 @@
 import { defineConfig } from 'vitepress'
+// 直接从组件库源码读取 manifest，避免依赖 alkaid-plus 的构建产物
+// （VitePress 的 config 在 dev 阶段就会立刻执行，alkaid-plus/dist 可能尚未生成；
+//  且 manifest.ts 是纯 TS 数据，没有 Vue / Element Plus 运行时副作用，
+//  以源码方式引用最稳定，也不需要改动 pnpm-lock.yaml）。
+import {
+  getDocComponentsByCategory,
+  type ComponentManifestItem,
+} from '../../packages/components/src/manifest'
+
+// 从组件库的 manifest 派生侧边栏，避免在文档站手工维护一份与组件清单
+// 完全重复的目录。新增组件时，只要 manifest 中标记 showInDocs 不为 false，
+// 这里立刻就能出现对应入口。
+const componentsSidebar = getDocComponentsByCategory().map((group) => ({
+  text: group.label,
+  items: group.items.map((item: ComponentManifestItem) => ({
+    text: item.docTitle ?? `${item.name}${item.docZh ? ' ' + item.docZh : ''}`,
+    link: `/components/${item.kebab}`,
+  })),
+}))
 
 export default defineConfig({
   title: 'Alkaid Plus',
@@ -46,65 +65,7 @@ export default defineConfig({
           ],
         },
       ],
-      '/components/': [
-        {
-          text: 'Basic 基础组件',
-          items: [
-            { text: 'Button 按钮', link: '/components/button' },
-            { text: 'Icon 图标', link: '/components/icon' },
-            { text: 'Link 链接', link: '/components/link' },
-            { text: 'Scrollbar 滚动条', link: '/components/scrollbar' },
-          ],
-        },
-        {
-          text: 'Form 表单组件',
-          items: [
-            { text: 'Input 输入框', link: '/components/input' },
-            { text: 'Select 选择器', link: '/components/select' },
-            { text: 'Form 表单', link: '/components/form' },
-            { text: 'Radio 单选框', link: '/components/radio' },
-            { text: 'Checkbox 多选框', link: '/components/checkbox' },
-            { text: 'Switch 开关', link: '/components/switch' },
-            { text: 'DatePicker 日期选择器', link: '/components/date-picker' },
-          ],
-        },
-        {
-          text: 'Data 数据展示',
-          items: [
-            { text: 'Table 表格', link: '/components/table' },
-            { text: 'Tag 标签', link: '/components/tag' },
-            { text: 'Pagination 分页', link: '/components/pagination' },
-            { text: 'Tree 树形控件', link: '/components/tree' },
-          ],
-        },
-        {
-          text: 'Navigation 导航',
-          items: [
-            { text: 'Menu 菜单', link: '/components/menu' },
-            { text: 'Tabs 标签页', link: '/components/tabs' },
-            { text: 'Breadcrumb 面包屑', link: '/components/breadcrumb' },
-            { text: 'Dropdown 下拉菜单', link: '/components/dropdown' },
-          ],
-        },
-        {
-          text: 'Feedback 反馈',
-          items: [
-            { text: 'Dialog 对话框', link: '/components/dialog' },
-            { text: 'Drawer 抽屉', link: '/components/drawer' },
-            { text: 'Message 消息提示', link: '/components/message' },
-            { text: 'Notification 通知', link: '/components/notification' },
-            { text: 'Alert 提示', link: '/components/alert' },
-          ],
-        },
-        {
-          text: 'Layout 布局',
-          items: [
-            { text: 'Container 容器', link: '/components/container' },
-            { text: 'Card 卡片', link: '/components/card' },
-            { text: 'Divider 分割线', link: '/components/divider' },
-          ],
-        },
-      ],
+      '/components/': componentsSidebar,
     },
 
     socialLinks: [
