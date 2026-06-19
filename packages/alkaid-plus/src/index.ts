@@ -11,6 +11,7 @@ export * from '@alkaid-plus/hooks'
 export * from '@alkaid-plus/utils'
 
 // 导入所有组件用于全量注册
+// 此部分由 scripts/sync-components.ts 自动生成
 import {
   AkButton,
   AkButtonGroup,
@@ -75,6 +76,11 @@ import {
   AkAlert,
   AkDialog,
   AkDrawer,
+  AkMessage,
+  AkMessageBox,
+  AkNotification,
+  AkLoading,
+  AkLoadingDirective,
   AkPopconfirm,
   AkPopover,
   AkTooltip,
@@ -96,6 +102,7 @@ import {
   AkCarouselItem,
   AkImage,
   AkImageViewer,
+  AkInfiniteScroll,
   AkTimeline,
   AkTimelineItem,
   AkTransfer,
@@ -111,6 +118,7 @@ import {
 } from '@alkaid-plus/components'
 
 // 所有组件列表
+// 此文件由 scripts/sync-components.ts 自动生成，请勿手动修改
 const components: Plugin[] = [
   AkButton,
   AkButtonGroup,
@@ -175,6 +183,11 @@ const components: Plugin[] = [
   AkAlert,
   AkDialog,
   AkDrawer,
+  AkMessage,
+  AkMessageBox,
+  AkNotification,
+  AkLoading,
+  AkLoadingDirective,
   AkPopconfirm,
   AkPopover,
   AkTooltip,
@@ -196,6 +209,7 @@ const components: Plugin[] = [
   AkCarouselItem,
   AkImage,
   AkImageViewer,
+  AkInfiniteScroll,
   AkTimeline,
   AkTimelineItem,
   AkTransfer,
