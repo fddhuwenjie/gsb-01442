@@ -28,7 +28,9 @@
     "test": "vitest",
     "clean": "rimraf node_modules **/node_modules **/dist",
     "prepare": "husky install",
-    "gen": "tsx scripts/gen-component.ts"
+    "gen": "tsx scripts/gen-component.ts",
+    "codegen": "tsx scripts/codegen.ts",
+    "prebuild": "pnpm codegen"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
